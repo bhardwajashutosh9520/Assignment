@@ -1,0 +1,95 @@
+<html>
+  <head>
+  	<title></title>
+    <link rel="stylesheet" type="text/css" href="retting.css"/>
+  </head>
+  <body>
+  	<nav class="c1">
+      <ul>
+        <li>
+          <a href="home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li>
+          <a  href="view.html">View Retting</a>
+        </li>
+      </ul>
+    </nav>
+    <form action="thank.html" method="post">
+    	<table border="1" align="center" height="60%" width="50%">
+  	    <tr>
+  	    	<th colspan="2">Rating</th>
+  	    </tr>
+        <tr>
+          <td>Name</td>
+          <td><input id = 'i1' type="text" placeholder="enter the name" name="name"/></td>
+        </tr>
+        <tr>
+   	      <td>Movies</td>
+          <td>
+            <select class="form-control" id="i2">
+              <option>1. Artical 15</option>
+              <option>2. Bharat</option>
+              <option>3. Uri</option>
+              <option>4. Total Dhamaal</option>
+              <option>5. Badla</option>
+              <option>6. Kesari</option>
+              <option>7. Kalank</option>
+              <option>8. Gulli Boy</option>
+              <option>9. Kabir Singh</option>
+              <option>10.Super 30</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+     	    <td>Rating</td>
+     	    <td>
+            <select class="form-control form-control-sm" id = 'i3'>
+              <option>5</option>
+              <option>4.5</option>
+              <option>4</option>
+              <option>3.5</option>
+              <option>3</option>
+              <option>2.5</option>
+              <option>2</option>
+              <option>1.5</option>
+              <option>1</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+        	<td colspan="2" align="center"><button onclick= "show()" type="button" class="btn btn-success">Submit</button></td>
+        </tr>
+      </table>
+    </form>
+
+    <script type="text/javascript">
+    	let name = document.getElementById('i1');
+      let movie = document.getElementById('i2');
+  	  let rate = document.getElementById('i3');
+      let array = [];
+          
+      function show(){
+        let sendata = {mname:"",rating:""};
+        sendata.mname = movie.value;
+        sendata.rating = rate.value;
+        let value =  localStorage.getItem('user');
+        let p = JSON.parse(value); 
+        console.log(p);
+        if(p != null) {
+          p.map(function (value) {
+            array.push(value);
+          });
+        }
+        array.push(sendata);
+        console.log(array);
+        localStorage.setItem('user',JSON.stringify(array));
+        document.getElementById('d1').innerHTML = "Thankyou Mr." + name.value;
+      }
+    </script>
+    <table align="center" height= "10%" width="60%">
+      <tr>
+        <td align="center"><div id = "d1"> </div></td>
+      </tr>
+    </table>
+  </body>
+</html>
