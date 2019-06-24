@@ -61,20 +61,16 @@
         </tr>
       </table>
     </form>
-
     <script type="text/javascript">
     	let name = document.getElementById('i1');
       let movie = document.getElementById('i2');
   	  let rate = document.getElementById('i3');
-      
-          
       function show(){
         let sendata = {mname:"",rating:""};
         sendata.mname = movie.value;
         sendata.rating = rate.value;
         let value =  localStorage.getItem('user');
         let p = JSON.parse(value); 
-    
         let array = [];
         if(p!=null) {
           p.map(function (v) {
