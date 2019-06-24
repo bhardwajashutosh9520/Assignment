@@ -57,15 +57,29 @@
           });
         }
         avg = sum / unum;
-        if(unum != 0){
-          document.getElementById('d1').innerHTML =  "Rating of the movie " + " " + name.value + " is" + " " + Math.round(avg);
+        if(unum != 0) {
+          switch(avg) {
+            case 1.5:
+              avg = 1.5;
+              break;
+            case 2.5:
+              avg = 2.5;
+              break;
+            case 3.5:
+              avg = 3.5;
+              break;
+            case 4.5:
+              avg = 4.5;
+              break;
+            default :
+              avg = Math.round(avg);
+          }
+          document.getElementById('d1').innerHTML =  "Rating of the movie " + " " + name.value + " is" + " " + avg;
         }else {
           document.getElementById('d1').innerHTML = "Sorry ! There is no data for movie" + " " + name.value;
          }
       }
     </script>
-    
-
     <table align="center" height= "10%" width="60%">
       <tr>
         <td align="center"><div id = "d1"> </div></td>
